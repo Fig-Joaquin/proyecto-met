@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 
 const HomeScreen = () => {
-    const mensajeError = null; // Aquí puedes asignar un mensaje de error si lo prefieres
+    const mensajeError = null; // Aquí puedes asignar un mensaje de error si lo prefieres.
     const [rut, setRut] = useState("");
     const [dv, setDv] = useState("");
     const [password, setPassword] = useState("");
