@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Asistencias</title>
+    <link rel="stylesheet" type="text/css" href="/css/attendance.css">
+</head>
+<body>
+    <h1>Listado de asistencias</h1>
+
+    <div class="options-button">
+        <button class="show-options-button" onclick="toggleOptions()">Mostrar asistencia</button>
+
+        <div id="options-container" class="options-container">
+            <ul>
+                <li><a href="/asistencia/readDaily">Diaria</a></li>
+                <li><a href="/asistencia/readWeekly">Semanal</a></li>
+                <li><a href="/asistencia/readMonthly">Mensual</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <table class="table" align="center">
+        <thead>
+            <tr>
+                <th>ID Usuario</th>
+                <th>Fecha</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% arrayAttendance.forEach(function(attendance) { %>
+                <tr>
+                    <td><%= attendance.idUser %></td>
+                    <td><%= attendance.date %></td>
+                </tr>
+            <% }); %>
+        </tbody>
+    </table>
+
+    <!-- Botón de Descargar Asistencia -->
+    <a href="/asistencia/downloadAllAttendance" class="download-button">Descargar asistencia aquí</a>
+
+    <!-- Botón de Volver Atrás -->
+    <a href="javascript:history.back()" class="go-back-button">Volver Atrás</a>
+
+    <script>
+        function toggleOptions() {
+            var optionsContainer = document.getElementById("options-container");
+            optionsContainer.classList.toggle("show");
+        }
+    </script>
+</body>
+</html>

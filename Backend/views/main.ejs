@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Información del Usuario</title>
+    <link rel="stylesheet" type="text/css" href="/css/main.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <div class="header">
+        <h1>Bienvenido(a) <%= names %> <%= lastName %> <%= secondLastName %></h1>
+    </div>
+
+    <div class="container">
+        <h2>Información del Usuario</h2>
+        <p><strong>Nombres:</strong> <%= names %></p>
+        <p><strong>Apellidos:</strong> <%= lastName %> <%= secondLastName %></p>
+        <p><strong>Cargo:</strong> <%= jobTitle %></p>
+        <p><strong>Rol:</strong> <%= position %></p>
+    </div>
+
+    <div class="buttons">
+        <form id="registrarAsistenciaForm" action="/asistencia/create" method="post">
+            <button type="button" class="mark-attendance-button" onclick="enviarSolicitud()">Registrar Asistencia</button>
+        </form>
+        <a href="/asistencia/read" class="view-attendance-button">Visualizar Asistencia</a>
+        <form action="/logIn" method="post">
+            <input class="logout-button" type="submit" value="Cerrar Sesión">
+        </form>
+        <form action="/grupo/create" method="get">
+            <input class="view-random-attendance-button" type="submit" value="Ver Asistencia Aleatoria">
+        </form>
+    </div>
+
+    <script>
+        function enviarSolicitud() {
+            $.ajax({
+                url: '/asistencia/create',
+                type: 'POST',
+                success: function(response) {
+                    alert('Asistencia registrada con éxito');
+                },
+                error: function(error) {
+                    alert('Ya registraste la asistencia diaria');
+                }
+            });
+        }
+    </script>
+
+</body>
+</html>
